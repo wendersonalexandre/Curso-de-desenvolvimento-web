@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 02</title>
+</head>
+<body>
+    <script>
+        //Se o usuario digitar o numero maior que 10 vai dar erro
+
+        let numeroUm = Number(prompt('Por favor, digite um número de 0 a 10:'))
+        let numeroDois = Number(prompt('Por favor, digite outro número de 0 a 10'))
+
+        /* if (numeroUm < 10 || numeroDois < 10){
+            alert(`voce digitou ${numeroUm} e ${numeroDois}`)
+        } else {
+            alert('[ERRO] Voce acabou digitando um número maior :(' )
+        } */
+
+        // outra forma de resolver
+
+        if (numeroUm <= 10 && numeroDois <= 10){
+
+            let media = (numeroUm + numeroDois) / 2 ;
+
+            if (media > 4){
+               console.log(`Sua media foi ${media} e voce foi APROVADO`) // Se a media for maior do que 4, vai ser executado o bloco verdadeiro que seria o bloco do IF.
+             } else {
+               console.log(`Sua media foi ${media} e voce foi REPROVADO`) // Se a media não for maior do que 4 , vai sere executado oque tiver dentro do ELSE.
+            }
+        } else {
+            alert('[ERRO] Voce acabou digitando um número maior que 10 :(' )
+        }
+    </script>
+</body>
+</html>
