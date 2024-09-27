@@ -6,13 +6,27 @@
     <title>Desafio 03</title>
 </head>
 <body>
-    <script>
-        let ano = 1004;
+    <script> // O desafio era contar do ano 1004 até chegar o ano 2024 contando  de 4 em 4 
+
+        // modo que o professor resolveu
+
+        let contador = 0;
+
+        for(ano = 1004; ano <= 2024; ano += 4 ){
+            contador++
+            document.write(`${ano} <br>`)
+        }
+
+
+
+        // Modo que eu resolvi o desafio
+
+        /* let ano = 1004;
       
         for (let contador = ano; contador <= 2024; contador +=4 ){
-        document.write(contador + '<br>')
+          document.write(contador + '<br>')
         } 
-
+ */
 
     </script>
 </body>
