@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercircio 05</title>
+</head>
+<body>
+    <script>
+        for(contador = 0; contador <= 100;contador++){
+            if( contador % 10 === 0){
+                continue
+            }
+            console.log(contador)
+            let numeroAleatorio = parseInt(Math.random() * 100 ) + 1
+            console.log(`Sorteio = ${numeroAleatorio}`)
+
+            if(contador % numeroAleatorio === 0){
+                break
+            }
+        }
+
+    </script>
+</body>
+</html>
