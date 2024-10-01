@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma dos números impares</title>
+</head>
+<body>
+    <script>
+        const numeros = [11 , 10 , 15 , 33, 10, 19, 21 , 40 ]
+        let somaDosImpares = 0;
+
+        for(let i = 0; i < numeros.length; i++){
+           let n = numeros[i]
+            if(n % 2 !== 0){
+                somaDosImpares  += n
+            }
+            
+        }
+         alert(`A soma dos impares é ${somaDosImpares}`)
+
+
+    </script>
+</body>
+</html>

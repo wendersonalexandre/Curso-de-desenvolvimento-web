@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercircio 03</title>
+</head>
+<body>
+    <h1>lista de nomes</h1>
+    <script> // Na lista de nomes no exercircio anterior, adicione mais um nome a partit de um prompt antes de mostrar os nomes e a quantidade na tela
+
+        let nomes = new Array('João', ' Maria', ' Wenderson', ' Flavio', ' Miragilda' , 'Marivaldo jose');// Sintaxe função construtora
+
+        let nome = prompt('Digite seu nome:')
+
+        nomes[nomes.length] = nome;
+        /*nomes[6] = nome;  */ // Também posso fazer assim
+                
+        for(let i = 0; i < nomes.length; i++){
+           document.write(`Nome: ${nomes[i]} <br>`)
+        };
+        document.write(`A lista de nomes possui ${nomes.length} elementos`);
+
+    </script>
+</body>
+</html>
