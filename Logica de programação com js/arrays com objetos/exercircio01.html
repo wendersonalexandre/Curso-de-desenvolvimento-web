@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> </title>
+</head>
+<body>
+
+    <ol id="lista">
+    </ol>
+
+
+    <script>
+     
+        const pessoas = [
+            {nome:'Wenderson Alexandre', Email: 'wenderson21@Gmail.com'},
+            {nome:'Marcio jose', Email: 'marciojose21@Gmail.com'},
+            {nome:'Caetano veloso', Email: 'caetanoveloSo21@Gmail.com'},
+            {nome:'Ricardo silva', Email: 'ricardinhosilv21@Gmail.com'},
+            {nome:'jose mario', Email: 'marioj21@Gmail.com'}  
+        ]
+
+        const list = document.getElementById('lista')
+
+        for(let i = 0;i <pessoas.length;i++){
+
+            list.innerHTML += `<lie>${pessoas[i].nome}: ${pessoas[i].Email} </liexe> <br>`
+            
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objetos</title>
+</head>
+<body>
+    <script>
+    
+        const endereco = {
+            rua:'Rua Amaral Francisco Silva',
+            numero: 302
+        }
+        const pessoa = {
+            nome:'Vicent',
+            sobrenome:'Alexandre',
+            endereco
+        }
+
+        document.write(`${pessoa.nome} ${pessoa.sobrenome} mora na ${pessoa.endereco.rua} no número ${pessoa.endereco.numero}`)
+
+        //Loops for in serve para interagit com um objeto
+        for(let prop in pessoa){
+            console.log(prop)
+            console.log(pessoa[prop])
+
+            // 1- 'nome' - pessoa['nome'] - pessoa.nome
+            // 2- 'sobrenome' - pessoa['sobrenome'] - pessoa.sobrenome
+            // 3- 'endereco' -  pessoa[endereco] - pessoa.endereco
+        }
+
+
+    </script>
+</body>
+</html>

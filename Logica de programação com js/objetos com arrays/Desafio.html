@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <ul id="media-aluno">
+
+    </ul>
+    <script>
+         const alunos= [
+              {nome: 'Maria jose', notas:[8,9,7,8]},
+              {nome: 'João silva', notas:[5,4,6,8]}
+         ];
+         const mediaDosAlunos = document.getElementById('media-aluno');
+         let listDeAlunos = '';
+
+         for(let i = 0; i <alunos.length;i++){
+           listDeAlunos += `<li>${alunos[i].nome}, Media:`
+           let soma = 0;
+
+           for(let j = 0;j <alunos[i].notas.length;j++){
+                soma += alunos[i].notas[j]
+           } 
+           let media = soma / alunos[i].notas.length
+           listDeAlunos += `${media.toFixed(1)}</li>`
+         }
+         mediaDosAlunos.innerHTML = listDeAlunos
+    </script>
+</body>
+</html> 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        table td,th {
+            border: 1px solid black;
+            text-align: center; 
+            padding: 3px;
+          }
+    </style>
+</head>
+<body>
+    <h1>Tabela de Produtos</h1>
+    <table  style="border-collapse: collapse;">
+        <thead >
+            <tr>
+                <th>produtos</th> <th>preços</th> <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody id="prod">
+
+        </tbody>
+    </table>
+
+    <script>
+        const produtos =[
+            {nomeDoProduto: 'Arroz', preco: 3.6, quantidade: 24},
+            {nomeDoProduto: 'Macarrão', preco: 4.0, quantidade: 12},
+            {nomeDoProduto: 'Maçã', preco: 2.0, quantidade: 31},
+            {nomeDoProduto: 'Xuxu', preco: 3.3, quantidade: 18},
+            {nomeDoProduto: 'Feijão', preco: 7.3, quantidade: 21}
+        ]
+        const produt = document.getElementById('prod')
+
+        for(let i = 0;i <produtos.length;i++){
+            produt.innerHTML += `<tr><td>${produtos[i].nomeDoProduto}</td>   <td>${produtos[i].preco.toFixed(2)}</td>  <td>${produtos[i].quantidade}</td> </tr>`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo">Um titulo qualquer</h1>
+    <p id="paragrafo">Esse é apenas um paragrafo</p>
+    <hr>
+    
+    <input type="text" id="user" value="valor preenchido">
+
+    <h2>Lista</h2>
+    <ul id="listaTarefas">
+        <li>Aprender CSS</li>
+        <li>Aprender Javascript</li>
+        <li>Aprender DOM profundamente</li>
+        <li>Criar algo</li>
+    </ul>
+
+    <script> 
+        document.getElementById('titulo').textContent = 'Titulo alterado'
+
+        const list = document.getElementById('listaTarefas');
+        let novaTarefa = 'Aplicar a vagas de emprego'
+
+        list.innerHTML += `<li> ${novaTarefa} </li>`
+    </script>
+</body>
+</html>
