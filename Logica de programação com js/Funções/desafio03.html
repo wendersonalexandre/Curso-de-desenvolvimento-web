@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function calcular(n1,s,n2){
+            switch(s){
+                case '*':
+                    return n1 * n2
+                    break
+                
+                case '+':
+                    return n1 + n2
+                    break
+                
+                case '/':
+                    return n1 / n2
+                    break
+                
+                case '-':
+                    return n1 - n2
+                    break
+                default:
+                    return null
+            }
+       }
+       console.log(calcular(10,'-',4))
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Àrea do círculo</title>
+</head>
+<body>
+    <h1>Área do circulo</h1>
+
+    <label > Raio
+        <input type="text" id="raio">
+    </label>
+    <br>
+    <button onclick="mostrarareadopromptAlert()">Calcular a area do prompt e mostrar no alert</button>
+    <br>
+    <button onclick="mostrarareadoinputAlert()">Calcular a area do input e mostrar no alert</button>
+    <br>
+    <button onclick="mostrarareadopromptOutput()">Calcular a area do prompt e mostrar no output</button>
+    <br>
+    <button onclick="mostrarareadoinputOutput()">Calcular a area do input e mostrar no output</button>
+    <br>
+    <output id="output">  </output>
+
+    <script>
+        const raio = document.getElementById('raio')
+        const output = document.getElementById('output')
+
+        function mostrarareadopromptAlert(){
+            let raio = parseFloat(prompt('Digite o raio'))
+            let area = calcularArea(raio )
+            alert(`A area da circuferencia de raio ${raio} é ${area}`)
+        }
+
+        function mostrarareadoinputAlert(){
+            let raioInput = parseFloat(raio.value)
+            let mensagem = calcularArea(raioInput)
+            alert(`A area da circuferencia de raio ${raioInput } é ${area}`)
+        }
+
+        function mostrarareadopromptOutput(){
+            let raio = parseFloat(prompt('Digite o raio'))
+            let mensagem = calcularArea(raio )
+            output.innerHTML += `A area da circuferencia de raio ${raio} é ${area}`
+        }
+
+        function mostrarareadoinputOutput (){
+            let raioInput = parseFloat(raio.value)
+            let mensagem = calcularArea(raioInput)
+            output.innerHTML += `A area da circuferencia de raio ${raioInput} é ${area}`
+        }
+
+
+        function calcularArea(raio){
+            const pi = Math.PI
+            let area = pi* raio * raio 
+
+            return area
+        }
+
+    </script>
+</body>
+</html>

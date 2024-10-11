@@ -6,15 +6,42 @@
     <title>Função</title>
 </head>
 <body>
+
     <h1>função</h1>
-    <input type="text" id="number">
-    <button onclick="clicar()">Mostrar tabuada</button>
+    <input type="number" id="number" value="1">
+    <button onclick="mostrartabuada()">Mostrar tabuada</button>
+    <button id="limpartabuada" onclick="limpartabuada()">Limpar</button>
+    <div id="output">
+
+    </div>
 
 
     <script>
-        function clicar(){
-            alert('cliquei')
+        const input2 = document.getElementById('number')
+        const output = document.getElementById('output')
+
+        let tabuadahtml = ''
+
+        function mostrartabuada(){
+            const inputValue = Number(input2.value) 
+
+            limpartabuada()
+
+            for(let i = 1; i <= 10;i++){
+             tabuadahtml += `${i} x ${inputValue} = ${i * inputValue} <br>`
+             
+            }
+
+            output.innerHTML = tabuadahtml
         }
+
+        function limpartabuada(){
+            tabuadahtml = ''
+            output.innerHTML = ''
+        }
+        mostrartabuada()
+
+
     </script>
 </body>
 </html>
