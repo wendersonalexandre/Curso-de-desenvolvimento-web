@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos primitivos</title>
+</head>
+<body>
+    <h1>Tipos primitivos</h1>
+
+    <p>
+        Em javascript, há dois tipos de dadods possiveos: primitivos (passados por valores) e objetos (passados por referencia)
+    </p>
+
+    <ul>
+        <li>String</li>
+        <li>Number</li>
+        <li>Boolean</li>
+        <li>null</li>
+        <li>Undefined</li>
+        <li>symbol (ES2015)</li>
+    </ul>
+
+    <script> 
+
+        let n = 10
+        function teste(n){
+            console.log('n interno função teste',++n)
+        }
+
+        teste(n) // valor 10
+
+        console.log('n externo', n)
+
+
+
+
+        const arr = [1,2,3] 
+
+        function adicioanarArray(Valor, arr){
+            arr[arr.length] = Valor
+        }
+
+        function limparArr(arr){
+            arr.length = 0
+
+        }
+         limparArr(arr)
+         adicioanarArray('novo valor' , arr)
+
+        console.log(arr)
+
+
+
+        const obj = {mome: 'Daniel'}
+
+        function adicioanarpropEmobjeto(prop,valor, obj){
+            if (obj[prop] === undefined){
+                
+                obj[prop] = valor
+            }
+        }
+
+        adicioanarpropEmobjeto('nome', 'maria',obj)
+
+        console.log(obj)
+    </script>
+</body>
+</html>

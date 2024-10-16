@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.</title>
+</head>
+<body>
+    <h1>try ... catch(ERROR)</h1>
+
+    <div id="output">
+
+    </div>
+
+    <script>
+        let obj = {nome: 'Daniel',email: 'Danielsilva@gmail.com' }
+
+
+
+        try{
+            document.getElementById('output').innerHTML = `Nome: ${obj.nome} - Email: ${obj.email}`
+        } catch (e){
+            alert('Deu ruim' + e)
+        }
+
+        alert('Fim do programa' )
+        
+    </script>
+
+    <script src="areas.js"></script>
+
+    <script>
+       console.log( calcularAreaRetangulo(2,3))
+    </script>
+</body>
+</html>
