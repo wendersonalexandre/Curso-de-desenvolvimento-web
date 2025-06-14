@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>teste DOm</h1>
+
+    <div class="container">
+        <p>teste 1</p>
+        <p>lorem <a href="#">link</a>.</p>
+        <p>teste 2</p>
+        <h2>Lista:</h2>
+        <ul>
+            <li>item 1</li>
+            <li> item 2
+                <ul>
+                    <li>item 2.a</li>
+                    <li>item 2.b</li>
+                    <li>item 2.c</li>
+                </ul>
+            </li>
+            <li>item <a href="#">link</a></li>
+        </ul>
+    </div>
+    <script>
+        console.log(document.body);
+        console.log(document.body.parentElement);
+        console.log(document.body.parentNode);
+
+        const h2 = document.querySelector("h2"); // Seleciona o h2 atráves do DOM
+        const h2NextSibing = h2.nextElementSibling; // Seleciona o proximo irmao do h2, que seria o ul.
+        h2NextSibing.style.background = "yellow";
+        console.log(h2NextSibing);
+
+        /* 
+            childNOdes -> retorna uma NodeList com todos os nós filhos de um elemento.
+
+            children -> retorna todos os filhos e ignora os textos e comentarios.
+
+            firstChild -> Retorna somente o primeiro nó filho de um elemento.
+
+            firstElementChild ->  Retorna o primeiro elemento filho que seja uma TAG HTML, ignorando textos e comentarios.
+
+            lastChild -> retorna o ultimo nó filho.
+
+            lastElementChild -> retorna o último elemento filho de um nó, ou seja, o último filho que é uma tag HTML, ignorando nós de texto, comentários e outros tipos de nós.
+
+            hasChildNodes -> é um método do DOM que verifica se um elemento possui qualquer tipo de nó filho (pode ser elemento, texto, comentário, etc).
+        */
+    </script>
+</body>
+</html>
