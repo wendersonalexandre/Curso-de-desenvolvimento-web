@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>teste Dom</h1>
+
+    <div class="container">
+        <p>teste 1</p>
+        <p>lorem <a href="#">link</a>.</p>
+        <p>teste 2</p>
+        <h2>Lista:</h2>
+
+        <ul class="lista">
+            <li>item 1</li>
+            <li> item 2
+                <ul class="inserir-h1">
+                    <li>item 2.a</li>
+                    <li>item 2.b</li>
+                    <li>item 2.c</li>
+                </ul>
+            </li>
+            <li>item <a href="#">link</a></li>
+        </ul>
+    </div>
+    <script>
+        const title = document.createElement("h1");
+        const createTitleAtribute = document.createAttribute("id");
+        createTitleAtribute.value = "title";
+        title.setAttributeNode(createTitleAtribute);
+
+        title.setAttribute("title", "title inserido dinamicamente");
+        title.setAttribute("style", "color: red");
+
+        title.textContent = "texto inserido com textcontent, ";
+
+        const text = document.createTextNode("Criar nós no DOM");
+        title.appendChild(text);
+        console.log(title);
+
+        //document.querySelector(".inserir-h1").appendChild(title);
+        // document.querySelector(".container").prepend(title);
+
+        const title2 = document.createElement('h2'); 
+        title2.textContent = "titulo two";
+
+        const list = document.querySelector("ul");
+
+        const container = document.querySelector(".container");
+        container.insertBefore(title2, list);
+        container.insertBefore(title2, container.firstChild);
+
+        let seblevel = document.querySelector('ul ul');
+        seblevel = seblevel.cloneNode(true);
+        const h2 = document.querySelector('h2');
+        container.insertBefore(seblevel, h2.nextElementSibling);
+
+
+        const segundoparagrado = container.firstElementChild.nextElementSibling.nextElementSibling;
+        console.log(segundoparagrado);
+        segundoparagrado.after("Texto inserido com After");
+
+
+
+    </script>
+</body>
+</html> 
