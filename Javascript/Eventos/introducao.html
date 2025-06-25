@@ -6,6 +6,10 @@
     <title>Eventos</title>
 </head>
 <body>
+    <div id="container" style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #f0f0f0;">
+        <p>Teste de Eventos</p>
+
+    </div>
     <h1>Eventos</h1>
     <button id="btn1">botao 1</button>
     <button id="btn2">botao 2</button>
@@ -21,15 +25,28 @@
         }
 
         botao1.onclick = function(){
-            console.log('click btn1 função anonima')
+            console.log('click btn1 função anonima');
         }
         botao1.onclick = clicou;
 
         botao2.addEventListener('click', clicou);
 
         botao2.addEventListener('click', function(){
-            console.log('click btn2 função anonima')
+            console.log('click btn2 função anonima');
         })
+
+        botao3.addEventListener("click", function(){
+            console.log('clicou no botao 3');
+        },false);
+        
+        document.addEventListener("click", function(){
+            console.log('clicou no documento');
+        },false)
+
+        const containerDv = document.getElementById("container");
+        containerDv.addEventListener("click", function(){
+            console.log('clicou no container');
+        }, true);
 
 
 
