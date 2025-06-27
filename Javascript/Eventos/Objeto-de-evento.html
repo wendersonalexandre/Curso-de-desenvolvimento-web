@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos</title>
+    <title>Objeto de eventot</title>
 </head>
 <body>
-    <div id="container" style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #f0f0f0;">
+     <div id="container" style="display: flex; justify-content: center; align-items: center; background-color: #f0f0f0;">
         <p>Teste de Eventos</p>
 
     </div>
@@ -35,7 +35,10 @@
             console.log('click btn2 função anonima');
         })
 
-        botao3.addEventListener("click", function(){
+        botao3.addEventListener("click", function(e){
+            console.log(e);
+            e.stopPropagation(); // Impede a propagação do evento
+            // e.preventDefault(); // Impede o comportamento padrão do evento
             console.log('clicou no botao 3');
         },false);
 

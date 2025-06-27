@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre suas tarefas</title>
+
+    <style>
+        :root{
+            --cor-de-fundo: #D3ECCD;
+            --cor-texto: #212121;
+            --cor-borda: #21212188;
+            --cor-botao: #E67514;
+        }
+
+        body{
+            color: var(--cor-texto);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #feedbackMessege{
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .show{
+            padding-left: 20px;
+            border-radius: 10px;
+            width: 400px;
+            height: 50px;
+            background-color: rgba(243, 9, 9, 0.507);
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 10px;
+            margin-bottom: 20px;
+            animation: alert 1s ease-in-out ;
+        }
+
+        .show p{
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        .show span{
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        .show span:hover{
+            scale: 1.2;
+        }
+
+        @keyframes alert {
+             0% {
+                opacity: 0;
+                transform: translate(-50%, -100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+    
+        .container-form{
+            font-family:  sans-serif;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--cor-borda);
+            padding: 20px 30px;
+            background-color: var(--cor-de-fundo);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.39);
+            max-width: 400px;
+            overflow: hidden;
+        }
+
+        label{
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            margin: 10px;
+        }
+
+        input[type="text"]{
+            width: 92%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--cor-borda);
+            border-radius: 5px;
+            border-left: 3px solid var(--cor-botao);
+        }
+
+        textarea{
+            width: 92%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            border-left: 3px solid var(--cor-botao);
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            border-color: #e676149c;
+            outline: none;
+        }
+
+        .numeros-caracteres {
+            font-size: 0.9em;
+            color: #666;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            gap: 5px;
+            margin: 0 5px;
+        }
+
+        #contador{
+            color: #06923E;
+            font-weight: bold;
+        }
+
+        .check{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            flex-direction: row-reverse;
+            margin: 5px 0;
+        }
+
+        .check label{
+            margin-right: 5px;
+            font-weight: normal;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--cor-botao);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.39);
+        }
+
+        input[type="button"]:hover{
+            background-color: #ca6a1c;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="feedbackMessege" class="show" style="display: none;">
+        <span>❌</span> <p>Por favor, preencha os campos</p>
+    </div>
+    <div class="container-form-princ">
+
+        <div class="container-form">
+            <h1>Cadastre suas tarefas</h1>
+            <form action="#" method="POST" class="form-cadastro">
+                <label for="titulo">Titulo</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Digite o titulo da tarefa" required maxlength="255" autocomplete="off">
+                
+                <label for="Descrição">Descrição </label>
+                <textarea id="Descrição" name="Descrição" placeholder="Digite a descrição da tarefa" required maxlength="255"></textarea>
+
+                <div class="numeros-caracteres" style="display: none;">
+                    <span id="contador"> 255 </span>  <p>caracteres</p>
+                </div>
+
+                <div class="check">
+                    <label for="checkbox">Comprometo-me a entregar a tarefa</label>
+                    <input type="checkbox" id="checkbox" name="checkbox">
+                </div>
+            </form>
+            <input type="button" id="btnAdicionar" value="Adicionar" >
+        </div>
+    </div>
+
+    <script>
+        // Validar se o titulo da tarefa foi preenchido
+        // Mostrar um contador de caracteres
+        // Habilitar um botao "Adicionar" apenas se o checkbox estiver marcado.
+
+        const tituloInput = document.getElementById('titulo'); // Título da tarefa
+        const btnAdicionar = document.getElementById('btnAdicionar'); // Botão Adicionar
+        const checkbox = document.getElementById('checkbox'); // Checkbox
+        const formCadastro = document.querySelector('.form-cadastro'); // Formulário
+
+        const feedbackMessege = document.getElementById('feedbackMessege'); // Mensagem de feedback
+        const feedbackMessageClose = feedbackMessege.querySelector('span'); // Ícone de feedback
+        
+        const descricaoInput = document.getElementById('Descrição'); // Descrição da tarefa
+        const Containercontador = document.querySelector('.numeros-caracteres'); // Contador de caracteres
+        const contadorSpan = document.getElementById('contador'); // Elemento do contador
+        const maxCaracteres = descricaoInput.maxLength; // Máximo de caracteres permitidos
+
+        mostrarNum(maxCaracteres);
+        btnAdicionar.disabled = true;
+
+
+        formCadastro.addEventListener('submit', (event) => {
+            event.preventDefault(); // Impede o envio do formulário
+            console.log(tituloInput.value);
+            if(tituloInput.value === '' ){
+                showErrorMessage();
+                tituloInput.focus();
+                return;
+            }
+        });
+
+        function showErrorMessage(){
+            feedbackMessege.style.display = 'flex'; // Exibe a mensagem de feedback
+        }
+
+        Containercontador.removeAttribute('style'); // Remove o estilo de display none
+
+        function checkLength(){
+            let numeroLetrasDigitadas = this.value.length;
+            let caracteresRestantes = parseInt(maxCaracteres) - parseInt(numeroLetrasDigitadas);
+            mostrarNum(caracteresRestantes);
+        }
+        descricaoInput.addEventListener('input', checkLength);
+
+        function mostrarNum (n){
+            contadorSpan.textContent = n;
+        }
+
+        function habilitarBtn (){
+            btnAdicionar.disabled = false;
+            btnAdicionar.addEventListener('click', ()=>{
+                if( tituloInput.value === '' || descricaoInput.value === ''){
+                    showErrorMessage();
+                    return;
+                } 
+            })
+        }
+
+        checkbox.addEventListener('change',()=>{
+            if (checkbox.checked) {
+                habilitarBtn()
+                console.log("Marcado!");
+            } else {
+                console.log("Desmarcado!");
+            }
+        })
+
+        feedbackMessageClose.addEventListener('click', () => {
+            feedbackMessege.style.display = 'none'; // Esconde a mensagem de feedback
+            tituloInput.focus(); // Foca no campo de título
+        });
+        
+    </script>
+</body>
+</html>
