@@ -165,7 +165,7 @@
 </head>
 <body>
     <div id="feedbackMessege" class="show" style="display: none;">
-        <span>❌</span> <p>Por favor, preencha os campos</p>
+        <span>❌</span> <p>Por favor, preencha todos os campos</p>
     </div>
     <div class="container-form-princ">
 
@@ -214,7 +214,7 @@
 
 
         formCadastro.addEventListener('submit', (event) => {
-            event.preventDefault(); // Impede o envio do formulário
+            event.preventDefault(); 
             console.log(tituloInput.value);
             if(tituloInput.value === '' ){
                 showErrorMessage();
@@ -224,10 +224,20 @@
         });
 
         function showErrorMessage(){
-            feedbackMessege.style.display = 'flex'; // Exibe a mensagem de feedback
+
+            feedbackMessege.style.display = 'flex';
+            
+            function hideFeedbackMessage() {
+                feedbackMessege.style.display = 'none'; 
+                tituloInput.focus(); 
+                
+            }
+
+            feedbackMessageClose.addEventListener('click', hideFeedbackMessage);
+    
         }
 
-        Containercontador.removeAttribute('style'); // Remove o estilo de display none
+        Containercontador.removeAttribute('style');
 
         function checkLength(){
             let numeroLetrasDigitadas = this.value.length;
@@ -259,10 +269,6 @@
             }
         })
 
-        feedbackMessageClose.addEventListener('click', () => {
-            feedbackMessege.style.display = 'none'; // Esconde a mensagem de feedback
-            tituloInput.focus(); // Foca no campo de título
-        });
         
     </script>
 </body>
