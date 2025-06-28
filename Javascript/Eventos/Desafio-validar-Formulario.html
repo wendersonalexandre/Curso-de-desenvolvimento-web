@@ -7,10 +7,10 @@
 
     <style>
         :root{
-            --cor-de-fundo: #D3ECCD;
-            --cor-texto: #212121;
-            --cor-borda: #21212188;
-            --cor-botao: #E67514;
+            --cor-de-fundo: #FFF4E8;
+            --cor-texto: #002B45;
+            --cor-borda: #E0DCD2;
+            --cor-botao: #002B45;
         }
 
         body{
@@ -20,6 +20,8 @@
             justify-content: center;
             flex-direction: column;
             height: 100vh;
+            background-color: var(--cor-de-fundo);
+            font-family: Poppins, sans-serif;
         }
 
         #feedbackMessege{
@@ -77,11 +79,11 @@
             font-family:  sans-serif;
             display: flex;
             flex-direction: column;
-            border: 1px solid var(--cor-borda);
+            border: 1px solid #002b4552;
             padding: 20px 30px;
             background-color: var(--cor-de-fundo);
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.39);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.226);
             max-width: 400px;
             overflow: hidden;
         }
@@ -112,7 +114,7 @@
         }
 
         textarea:focus, input[type="text"]:focus {
-            border-color: #e676149c;
+            border-color: #002b45a2;
             outline: none;
         }
 
@@ -127,7 +129,7 @@
         }
 
         #contador{
-            color: #06923E;
+            color: var(--cor-texto);
             font-weight: bold;
         }
 
@@ -158,7 +160,8 @@
         }
 
         input[type="button"]:hover{
-            background-color: #ca6a1c;
+            background-color: #0c5786;
+            color: #FFFFFF ;
         }
 
     </style>
