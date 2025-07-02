@@ -1,0 +1,143 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: var(--cor-de-fundo-body)
+}
+
+.container-todo-princic{
+ border-radius: 10px;
+ margin-top: 30px;
+}
+
+.container-add-todo{
+    background-color: #131d4f;
+    height: 200px;
+    width: 350px;
+    border-radius: 10px 10px 5px 5px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: -14px;
+    position: relative;
+}
+
+.container-add-todo h1{
+    color: #dfd6d6;
+}
+
+.container-add-todo input[type="text"]{
+    height: 35px;
+    width: 250px;
+    padding-left: 10px;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+
+
+.container-add-todo input[type="submit"]{
+    background-color:#0c3961 ;
+    color: white;
+    border: none;
+    padding: 11px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.container-todo-item{
+    border:1px solid rgba(0, 0, 0, 0.103);
+    border-radius: 0px 0px 10px 10px;
+    min-height: 300px;
+    max-height: auto;
+    background-color:#EFE4D2 ;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.container-todo-item ul li {
+  background-color:#FFF4E8 ;
+  display: flex;              
+  align-items: center; 
+  margin-top: 25px;  
+  width: 300px;   
+  gap: 5px;                  
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px #954b2e9c;
+}
+
+
+.container-todo-item li p {
+  margin: 0;
+  flex: 1;   
+}
+
+.edit-button,
+.delete-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button:hover{
+    scale: 1.2;
+}
+.delete-item :hover{
+     scale: 1.2;
+}
+
+#add-todo-button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+#add-todo-button:active {
+  transform: scale(0.90);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) inset;
+}
+
+#add-todo-button:hover{
+    border:1px solid #cccccc4f;
+    background-color:#1b568ac7 ;
+    transition: 0.5s;
+}
+
+.img-tamanho{
+    width: 20px;
+    
+}
+
+/* Animação para entrada suave */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicada nas novas tarefas */
+.todo-item {
+  animation: fadeInSlide 0.4s ease;
+}
+
+
+
+
+

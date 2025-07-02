@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-todo-princic">
+        <div class="container-add-todo">
+            <h1>To-do List</h1>
+            <form id="form-todo">
+                <input type="text" id="todo-input" placeholder="New item" autocomplete="off" required>
+
+                <input type="submit" id="add-todo-button" value="Add">
+            </form>
+        </div>
+        <div class="container-todo-item">
+            <ul id="todo-list">
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const formSubmit = document.getElementById('form-todo');
+        const inputNewItem = document.getElementById('todo-input');
+        const btnAdd = document.getElementById("add-todo-button");
+        const containerAddItem = document.getElementById("todo-list");
+
+        let arrTasks = [
+            {
+                name:"task 1",
+                createAt: Date.now(),
+                completed: false
+            }
+        ]
+
+        (function(){
+            
+            // Função que adicionar uma tarefa.
+            function AddNewTask (){
+
+                  // criação da li
+                const createItemTask = document.createElement("li");
+                createItemTask.classList = "todo-item";
+
+                // criando input
+                const createInpt_Check_Box = document.createElement("input");
+                createInpt_Check_Box.type = 'checkbox';
+
+                // paragrafo
+                const createParagraf = document.createElement("p");
+                createParagraf.textContent = inputNewItem.value;
+                
+                // Imagem do botão de editar
+                const createImg_edit = document.createElement("img");
+                createImg_edit.src = 'https://images.icon-icons.com/931/PNG/512/edit_modify_icon-icons.com_72390.png';
+                createImg_edit.className = 'img-tamanho';
+
+                // botão de editar 
+                const createButtonEdit = document.createElement("button");
+                createButtonEdit.className = 'edit-button';
+                createButtonEdit.appendChild(createImg_edit);
+
+                // Imagem do botao deletar
+                const createImg_deleteItem = document.createElement("img");
+                createImg_deleteItem.src = 'https://images.icon-icons.com/931/PNG/512/delete_remove_bin_icon-icons.com_72400.png';
+                createImg_deleteItem.className = 'img-tamanho';
+
+                //Botao Deletar
+                const createButtonDelete = document.createElement("button");
+                createButtonDelete.className = 'delete-item';
+                createButtonDelete.appendChild(createImg_deleteItem);
+                
+                // Div com botões
+                const createDivButton = document.createElement("div");
+                createDivButton.className = 'buttons-icons';
+                createDivButton.appendChild(createButtonEdit);
+                createDivButton.appendChild(createButtonDelete);
+
+                createItemTask.appendChild(createInpt_Check_Box);
+                createItemTask.append(createParagraf);
+                createItemTask.appendChild(createDivButton);
+                containerAddItem.appendChild(createItemTask);
+
+
+                // Criando um evento pra o checkbox
+                createInpt_Check_Box.addEventListener('click', ()=>{
+                    if(createInpt_Check_Box.checked){
+                         createParagraf.style.textDecoration = ' line-through'
+                        createParagraf.style.color = '#888';
+                    } else {
+                         createParagraf.style.textDecoration = ' none'
+                         createParagraf.style.color = 'black';
+                    }
+                })
+
+                // evento pra o botão de editar
+                createButtonEdit.addEventListener('click', ()=>{
+                    inputNewItem.focus();
+                    createParagraf.textContent = inputNewItem.value;
+                    console.log('editado')
+                })
+
+                // evento pra o botão de excluir
+                createButtonDelete.addEventListener("click", ()=>{
+                    createItemTask.remove();
+                    inputNewItem.focus();
+
+                })
+                
+            }
+
+            // Adicionando um evento quando enviar o formulário
+            formSubmit.addEventListener("submit", function(e) {
+                e.preventDefault()
+                AddNewTask()
+                inputNewItem.value = ''
+                inputNewItem.focus();
+            })
+
+
+        })()
+
+    </script>
+</body>
+</html>
