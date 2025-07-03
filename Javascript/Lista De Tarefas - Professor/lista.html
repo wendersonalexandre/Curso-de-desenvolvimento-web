@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="container-todo-princic">
@@ -16,7 +17,7 @@
                 <input type="submit" id="add-todo-button" value="Add">
             </form>
         </div>
-        <div class="container-todo-item">
+        <div class="container-todo-item" ">
             <ul id="todo-list">
 
             </ul>
@@ -39,25 +40,61 @@
                 }
             ]
 
-            function addEventli(li){
+           /*  function addEventli(li){
                 li.addEventListener('click', function(){
                     console.log(this);
                 })
-            }
+            } */
 
             function ganarateLiTask(obj){
-                   // criação da li
                 const createItemTask = document.createElement("li");
-                createItemTask.classList = "todo-item";
-
-                 // paragrafo
                 const createParagraf = document.createElement("p");
-                createParagraf.textContent = obj.name;
+                const checkButton = document.createElement("button");
+                const editBUtton = document.createElement("i");
+                const deleteButton = document.createElement("i");
 
+                editBUtton.className = 'fas fa-edit';
+                editBUtton.setAttribute("data-action", "edit-button")
+                deleteButton.className = 'fas fa-trash-alt';
+                deleteButton.setAttribute("data-action", "deleteButton");
+
+
+                createItemTask.classList = "todo-item";
+                checkButton.className = "button-check";
+                checkButton.innerHTML = '<i class="fas fa-check "></i>';
+                checkButton.setAttribute("data-action", "checkButton");
+
+                createItemTask.appendChild(checkButton)
+
+                createParagraf.textContent = obj.name;
                 createItemTask.appendChild(createParagraf);
 
-                addEventli(createItemTask);
-                return createItemTask;
+                const divContainerEdit = document.createElement("div");
+                divContainerEdit.className = "editContainer";
+                const createInputEdit = document.createElement("input");
+                createInputEdit.setAttribute("type", 'text');
+                createInputEdit.className = 'editInput';
+                divContainerEdit.appendChild(createInputEdit);
+
+                const containerEditButton = document.createElement("button"); 
+                containerEditButton.className = 'editButton';
+                containerEditButton.textContent = 'Edit';
+                divContainerEdit.appendChild(containerEditButton);
+                containerEditButton.setAttribute("data-action", "EditContainerBtn");
+                
+                const containerCalcelButton = document.createElement("button");
+                containerCalcelButton.className = 'cancelButton';
+                containerCalcelButton.textContent = 'Cancel'
+                divContainerEdit.appendChild(containerCalcelButton);
+                containerCalcelButton.setAttribute("data-action", "cancelContainerBtn");
+
+                
+                createItemTask.appendChild(editBUtton);
+                createItemTask.appendChild(deleteButton);
+                createItemTask.appendChild(divContainerEdit);
+
+                //addEventli(createItemTask);
+                return createItemTask; 
             }
 
             function renderTasks(){
@@ -77,6 +114,12 @@
 
             }
 
+            function clikedUl(e){
+                console.log(e.target)
+
+
+            }
+
             // Adicionando um evento quando enviar o formulário
             formSubmit.addEventListener("submit", function(e) {
                 e.preventDefault();
@@ -86,80 +129,9 @@
                 inputNewItem.focus();
             })
 
+            containerAddItem.addEventListener("click", clikedUl)
+
             renderTasks();
-
-
-            // Função que adicionar uma tarefa.
-            /* function AddNewTask (){
-
-                // criando input
-                const createInpt_Check_Box = document.createElement("input");
-                createInpt_Check_Box.type = 'checkbox';
-
-                // paragrafo
-                const createParagraf = document.createElement("p");
-                createParagraf.textContent = inputNewItem.value;
-                
-                // Imagem do botão de editar
-                const createImg_edit = document.createElement("img");
-                createImg_edit.src = 'https://images.icon-icons.com/931/PNG/512/edit_modify_icon-icons.com_72390.png';
-                createImg_edit.className = 'img-tamanho';
-
-                // botão de editar 
-                const createButtonEdit = document.createElement("button");
-                createButtonEdit.className = 'edit-button';
-                createButtonEdit.appendChild(createImg_edit);
-
-                // Imagem do botao deletar
-                const createImg_deleteItem = document.createElement("img");
-                createImg_deleteItem.src = 'https://images.icon-icons.com/931/PNG/512/delete_remove_bin_icon-icons.com_72400.png';
-                createImg_deleteItem.className = 'img-tamanho';
-
-                //Botao Deletar
-                const createButtonDelete = document.createElement("button");
-                createButtonDelete.className = 'delete-item';
-                createButtonDelete.appendChild(createImg_deleteItem);
-                
-                // Div com botões
-                const createDivButton = document.createElement("div");
-                createDivButton.className = 'buttons-icons';
-                createDivButton.appendChild(createButtonEdit);
-                createDivButton.appendChild(createButtonDelete);
-
-                createItemTask.appendChild(createInpt_Check_Box);
-                createItemTask.append(createParagraf);
-                createItemTask.appendChild(createDivButton);
-                containerAddItem.appendChild(createItemTask);
-
-
-                // Criando um evento pra o checkbox
-                createInpt_Check_Box.addEventListener('click', ()=>{
-                    if(createInpt_Check_Box.checked){
-                         createParagraf.style.textDecoration = ' line-through'
-                        createParagraf.style.color = '#888';
-                    } else {
-                         createParagraf.style.textDecoration = ' none'
-                         createParagraf.style.color = 'black';
-                    }
-                })
-
-                // evento pra o botão de editar
-                createButtonEdit.addEventListener('click', ()=>{
-                    inputNewItem.focus();
-                    createParagraf.textContent = inputNewItem.value;
-                    console.log('editado')
-                })
-
-                // evento pra o botão de excluir
-                createButtonDelete.addEventListener("click", ()=>{
-                    createItemTask.remove();
-                    inputNewItem.focus();
-
-                })
-                
-            } */
-
-            
 
         })()
 
