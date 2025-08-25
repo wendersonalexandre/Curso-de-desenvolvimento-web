@@ -12,8 +12,7 @@
         <div class="container-add-todo">
             <h1>To-do List</h1>
             <form id="form-todo">
-                <input type="text" id="todo-input" placeholder="New item" autocomplete="off" required>
-
+                <input type="text" id="todo-input" placeholder="New item" autocomplete="off" required >
                 <input type="submit" id="add-todo-button" value="Add">
             </form>
         </div>
@@ -23,22 +22,19 @@
             </ul>
         </div>
     </div>
-
     <script>
         
         (function(){
+            // Selecionando os elementos do DOM
             const formSubmit = document.getElementById('form-todo');
             const inputNewItem = document.getElementById('todo-input');
             const btnAdd = document.getElementById("add-todo-button");
             const containerAddItem = document.getElementById("todo-list");
-    
-            let arrTasks = [
-                {
-                    name:"task 1",
-                    createAt: Date.now(),
-                    completed: false
-                }
-            ]
+            const lis = containerAddItem.getElementsByTagName("li");
+
+            // Array para armazenar as tarefas
+            // Inicializando com uma tarefa de exemplo
+            let arrTasks = getSavedData();
 
            /*  function addEventli(li){
                 li.addEventListener('click', function(){
@@ -46,7 +42,41 @@
                 })
             } */
 
+            function getSavedData(){
+                let tasksData = localStorage.getItem("tasks");
+                console.log(tasksData);
+                tasksData = JSON.parse(tasksData);
+                
+                return tasksData.length ?  tasksData : [
+
+                    {
+                        name: "task 1",
+                        createAt: Date.now(),
+                        completed: true
+                    },
+
+                    {
+                        name: "task 2",
+                        createAt: Date.now(),
+                        completed: false
+                    }
+                ] ;
+
+                 
+            }
+
+            function setNewData(){
+                localStorage.setItem("tasks", JSON.stringify(arrTasks));
+            }
+
+            setNewData();
+
+            // Função para gerar o elemento <li> com a tarefa
+            // e seus botões de ação
             function ganarateLiTask(obj){
+
+                // Criando os elementos necessários
+                // e atribuindo classes e atributos
                 const createItemTask = document.createElement("li");
                 const createParagraf = document.createElement("p");
                 const checkButton = document.createElement("button");
@@ -54,14 +84,16 @@
                 const deleteButton = document.createElement("i");
 
                 editBUtton.className = 'fas fa-edit';
-                editBUtton.setAttribute("data-action", "edit-button")
+                editBUtton.setAttribute("data-action", "editButton")
+
                 deleteButton.className = 'fas fa-trash-alt';
                 deleteButton.setAttribute("data-action", "deleteButton");
 
 
                 createItemTask.classList = "todo-item";
-                checkButton.className = "button-check";
-                checkButton.innerHTML = '<i class="fas fa-check "></i>';
+                checkButton.className = "button-check";  
+                checkButton.innerHTML =  
+                `  <i class="fas fa-check" ${obj.completed ? '' : 'displayNone'} data-action="checkButton"></i>`   ;
                 checkButton.setAttribute("data-action", "checkButton");
 
                 createItemTask.appendChild(checkButton)
@@ -69,13 +101,17 @@
                 createParagraf.textContent = obj.name;
                 createItemTask.appendChild(createParagraf);
 
+                // Adicionando os botão de editar e excluir
                 const divContainerEdit = document.createElement("div");
                 divContainerEdit.className = "editContainer";
                 const createInputEdit = document.createElement("input");
                 createInputEdit.setAttribute("type", 'text');
                 createInputEdit.className = 'editInput';
+                createInputEdit.value = obj.name;
                 divContainerEdit.appendChild(createInputEdit);
 
+                // Botões de editar e cancelar edição
+                // dentro do container de edição
                 const containerEditButton = document.createElement("button"); 
                 containerEditButton.className = 'editButton';
                 containerEditButton.textContent = 'Edit';
@@ -88,7 +124,7 @@
                 divContainerEdit.appendChild(containerCalcelButton);
                 containerCalcelButton.setAttribute("data-action", "cancelContainerBtn");
 
-                
+                // Adicionando os elementos criados ao <li>
                 createItemTask.appendChild(editBUtton);
                 createItemTask.appendChild(deleteButton);
                 createItemTask.appendChild(divContainerEdit);
@@ -97,6 +133,7 @@
                 return createItemTask; 
             }
 
+            // Função para renderizar as tarefas na lista
             function renderTasks(){
                 containerAddItem.innerHTML = '';
 
@@ -105,6 +142,7 @@
                 });
             }
 
+            // Função para adicionar uma nova tarefa ao array
             function addTask(task){
                 arrTasks.push({
                     name:task,
@@ -112,12 +150,69 @@
                     completed: false
                 })
 
+                setNewData();
             }
 
+            // Função para remover uma tarefa do array
             function clikedUl(e){
-                console.log(e.target)
+                const dataAction = e.target.getAttribute("data-action");
 
+                if(!dataAction) return;
 
+                let currentLi = e.target;
+                 while(currentLi.nodeName !== "LI"){
+                    currentLi = currentLi.parentElement;
+                }
+            
+                const currentLiIndex = [...lis].indexOf(currentLi);
+
+                const actions = {
+                    editButton: function (){
+                        const editContainer = currentLi.querySelector(".editContainer");
+                        editContainer.style.display = 'flex';
+                    },
+                    deleteButton : function(){
+                        arrTasks.splice(currentLiIndex, 1);
+                        //currentLi.remove()
+                        renderTasks()
+                        setNewData();
+                        //currentLi.parentElement.removeChild(currentLi);
+                    },
+
+                    EditContainerBtn: function(){
+                        const valInpt = currentLi.querySelector(".editInput").value;
+                        if(valInpt.trim() === '') return;
+                        arrTasks[currentLiIndex].name = valInpt;
+                        renderTasks();
+                        setNewData()
+                    },
+                    cancelContainerBtn: function (){
+                        const editContainer = currentLi.querySelector(".editContainer")
+                        editContainer.style.display = 'none';
+                    },
+
+                    checkButton: function(){
+                        arrTasks[currentLiIndex].completed = !arrTasks[currentLiIndex].completed;
+                        
+                         if(arrTasks[currentLiIndex].completed){
+                           currentLi.querySelector(".fa-check").style.display = 'flex';
+                           currentLi.querySelector("p").style.textDecoration = 'line-through';
+                           currentLi.querySelector("p").style.color = 'gray';
+                        } 
+                        else {
+                            currentLi.querySelector(".fa-check").classList.add('displayNone');
+                        } 
+                        setNewData();
+                        renderTasks()
+                        
+
+                    }
+
+                }
+
+                if(actions[dataAction]){
+                    actions[dataAction]();
+                }
             }
 
             // Adicionando um evento quando enviar o formulário
@@ -129,7 +224,7 @@
                 inputNewItem.focus();
             })
 
-            containerAddItem.addEventListener("click", clikedUl)
+            containerAddItem.addEventListener("click", clikedUl);
 
             renderTasks();
 
