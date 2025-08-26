@@ -44,25 +44,25 @@
 
             function getSavedData(){
                 let tasksData = localStorage.getItem("tasks");
-                console.log(tasksData);
-                tasksData = JSON.parse(tasksData);
                 
-                return tasksData.length ?  tasksData : [
-
-                    {
+                    if (tasksData) {
+                        tasksData = JSON.parse(tasksData);
+                    } else {
+                        tasksData = [
+                            {
                         name: "task 1",
                         createAt: Date.now(),
                         completed: true
                     },
-
                     {
                         name: "task 2",
                         createAt: Date.now(),
                         completed: false
                     }
-                ] ;
+                    ];
+                }
 
-                 
+            return tasksData;
             }
 
             function setNewData(){
