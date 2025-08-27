@@ -1,4 +1,8 @@
 function task(nameTask){
+    "use strict";
+
+    if(this == undefined) return
+    
     let nameAt = nameTask;
     this.createdAt = new Date();
     this.updatedAt = null;
