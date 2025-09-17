@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagem de fundo</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-size: cover;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+    </style>
+</head>
+
+<body style="background-image: url(imagens/1.jpg);">
+
+    <h1 class="h1">Atualize a página para alterar a imagem de fundo</h1>
+
+</body>
+
+<script>
+    let imgs = ["imagens/1.jpg","imagens/2.jpg","imagens/3.jpg","imagens/4.jpg","imagens/5.jpg"]
+    let body = document.body;
+    let imgAleatoria = Math.floor(Math.random() * imgs.length );
+    
+    window.onload = function(){
+        body.style.backgroundImage = `url(${imgs[imgAleatoria]})`;
+        console.log(imgAleatoria)
+    }
+</script>
+
+</html>
