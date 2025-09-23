@@ -5,7 +5,7 @@ body{
 }
 
 .hero{
-    background-image: url(../imagens/bg-3.jpg);
+    background-image: linear-gradient(transparent, rgba(0,0,0,.6)), url(../imagens/bg-3.jpg);
     height: 500px;
     background-position: right center;
     background-size: cover;
@@ -18,17 +18,53 @@ body{
     margin-top: 150px;
 }
 
+#newsletterForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+#newsletterForm input,
+#newsletterForm button{
+    font-size: 1em;
+    padding: .5em;
+    border: none;
+}
+#newsletterForm button{
+    background-color: #70757b;
+}
+#newsletterForm input{
+    background-color: #9f9f9f;
+}
+#newsletterForm label{
+    margin-right: .5em;
+}
+
+#newsletterForm input:focus{
+    outline: none;
+    background-color: white;
+}
+#newsletterFeedback{
+    font-size: 1.3em;
+    text-shadow: 2px 2px 1px #333;
+
+}
+#newsletterFeedback p{
+    margin: 10px;
+    display: inline-block;
+}
+
 .hero-content h1{
     text-transform: uppercase;
     font-size: 46px;
     text-shadow: 3px 3px 2px #333;
 }
-.hero-content p{
-    background-color: rgba(0,0,0, .8);
-    display: inline-block;
-    padding: 10px;
-    border-bottom: 2px solid white;
+.hero-content h2{
+    font-size: 2em;
+    text-shadow: 2px 2px 1px #333;
 }
+
 
 
 
