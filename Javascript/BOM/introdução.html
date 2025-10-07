@@ -11,11 +11,47 @@
     <a href="history.html">Vai para History.html</a>
 
     <button>Abre com metodo open</button>
+    <hr>
+    <img src="https://tse2.mm.bing.net/th/id/OIP.wY-0nmPoDIAG88vXS-xI7wHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="imagem-codigos" width="1000" height="500">
+
+    <hr>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed repellendus quisquam repudiandae doloribus? Magni dolore natus odit quis nesciunt similique, labore, reprehenderit fugiat ad est ullam esse exercitationem ipsam nemo.</p>
 
     <script>
         document.querySelector("button").addEventListener("click", function(){
             window.open("history.html");
         });
+
+        window.addEventListener("load", ()=>{
+            console.log("load")
+        })
+
+        window.addEventListener("DOMContentLoaded", ()=>{
+            console.log("DOMContentLoaded")
+        })
+
+        window.addEventListener("resize", ()=>{
+            console.log("resize",innerWidth,innerHeight);
+        })
+
+        window.addEventListener("scroll", ()=>{
+            console.log("scroll",pageYOffset);
+        })
+
+        window.addEventListener("unload", ()=>{
+            console.log("unload");
+        })
     </script>
 </body>
 </html>
